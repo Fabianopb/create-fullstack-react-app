@@ -1,0 +1,29 @@
+{
+    "name": "postgresql-server",
+    "version": "0.1.0",
+    "keywords": [
+      "fullstack",
+      "react",
+      "postgresql"
+    ],
+    "description": "Template for PostgreSQL server.",
+    "main": "template.json",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Fabianopb/create-fullstack-react-app.git",
+      "directory": "packages/postgresql-server"
+    },
+    "license": "MIT",
+    "engines": {
+    "node": ">=10.6.*",
+    "yarn": ">=1.10.*"
+    },
+    "bugs": {
+      "url": "https://github.com/Fabianopb/create-fullstack-react-app/issues"
+    },
+    "files": [
+      "server",
+      ".sequelizerc",
+      "template.json"
+    ]
+  }
