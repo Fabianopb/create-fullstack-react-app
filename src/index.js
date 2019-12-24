@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const cp = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
+const deepMerge = require('deepmerge');
 
 function useYarn() {
   try {
@@ -35,6 +36,12 @@ function createProjectTemplate(projectName) {
   fs.mkdirsSync(destinationPath);
   fs.copySync(frontendSource, destinationPath, { filter: excludePackageJson });
   fs.copySync(backendSource, destinationPath, { filter: excludePackageJson });
+  const frontendPackageJson = fs.readFileSync(path.join(frontendSource, 'package.json'));
+  const backendPackageJson = fs.readFileSync(path.join(backendSource, 'package.json'));
+  const frontendPackageObject = JSON.parse(frontendPackageJson);
+  const backendPackageObject = JSON.parse(backendPackageJson);
+  const mergedPackageObject = { ...deepMerge(frontendPackageObject, backendPackageObject), name: projectName };
+  fs.writeFileSync(path.join(destinationPath, 'package.json'), JSON.stringify(mergedPackageObject, null, 2));
 }
 
 try {
