@@ -1,8 +1,10 @@
 {
-  "name": "root",
+  "version": "0.1.0",
+  "name": "create-fullstack-react-app",
+  "bin": "./src/index.js",
   "private": true,
+  "license": "MIT",
   "devDependencies": {
-    "lerna": "^3.19.0",
     "rimraf": "^3.0.0"
   },
   "dependencies": {
