@@ -24,7 +24,7 @@ function checkProjectName() {
   return projectName;
 }
 
-const filterPackageJson = file => !file.includes('/package.json');
+const excludePackageJson = file => !file.includes('/package.json');
 
 function createProjectTemplate(projectName) {
   const frontendSource = path.join(__dirname, '../packages/react-ts');
@@ -33,8 +33,8 @@ function createProjectTemplate(projectName) {
   console.log(chalk.cyan('Project will be created at:'));
   console.log(chalk.cyan(destinationPath + '\n'));
   fs.mkdirsSync(destinationPath);
-  fs.copySync(frontendSource, destinationPath, { filter: filterPackageJson });
-  fs.copySync(backendSource, destinationPath, { filter: filterPackageJson });
+  fs.copySync(frontendSource, destinationPath, { filter: excludePackageJson });
+  fs.copySync(backendSource, destinationPath, { filter: excludePackageJson });
 }
 
 try {
