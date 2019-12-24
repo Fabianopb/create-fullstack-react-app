@@ -2,7 +2,17 @@
   "name": "react-ts",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:9000",
+  "engines": {
+    "node": ">=10.6.*",
+    "yarn": ">=1.10.*"
+  },
   "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.0"
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -10,9 +20,6 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
