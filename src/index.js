@@ -70,7 +70,7 @@ try {
   useYarn();
   const projectName = checkProjectName();
   createProjectTemplate(projectName);
-  // cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
+  cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
 } catch (e) {
   console.log(chalk.red(e));
   process.exit(1);
