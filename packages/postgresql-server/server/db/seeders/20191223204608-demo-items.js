@@ -1,56 +1,56 @@
-"use strict"
-const db = require("../models")
+'use strict';
+const db = require('../models');
 
-const date = new Date()
+const date = new Date();
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const transaction = await queryInterface.sequelize.transaction()
+    const transaction = await queryInterface.sequelize.transaction();
     try {
-      const users = await db.User.findAll({ raw: true })
+      const users = await db.User.findAll({ raw: true });
       await queryInterface.bulkInsert(
-        "Items",
+        'Items',
         [
           {
-            name: "Red Ferrari",
+            name: 'Red Ferrari',
             createdAt: date,
             updatedAt: date,
             UserId: users[0].id,
           },
           {
-            name: "White Yacht",
+            name: 'White Yacht',
             createdAt: date,
             updatedAt: date,
             UserId: users[1].id,
           },
           {
-            name: "Blue Mansion",
+            name: 'Blue Mansion',
             createdAt: date,
             updatedAt: date,
             UserId: users[0].id,
           },
           {
-            name: "Yellow Submarine",
+            name: 'Yellow Submarine',
             createdAt: date,
             updatedAt: date,
           },
         ],
-        { transaction }
-      )
-      await transaction.commit()
+        { transaction },
+      );
+      await transaction.commit();
     } catch (error) {
-      await transaction.rollback()
-      throw error
+      await transaction.rollback();
+      throw error;
     }
   },
 
   down: async (queryInterface, Sequelize) => {
-    const transaction = await queryInterface.sequelize.transaction()
+    const transaction = await queryInterface.sequelize.transaction();
     try {
-      await queryInterface.bulkDelete("Items", null, { transaction })
-      await transaction.commit()
+      await queryInterface.bulkDelete('Items', null, { transaction });
+      await transaction.commit();
     } catch (error) {
-      await transaction.rollback()
-      throw error
+      await transaction.rollback();
+      throw error;
     }
   },
-}
+};

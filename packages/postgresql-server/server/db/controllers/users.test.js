@@ -1,23 +1,23 @@
-const request = require("supertest")
-const app = require("../../app")
-const db = require("../models")
+const request = require('supertest');
+const app = require('../../app');
+const db = require('../models');
 
 afterAll(() => {
-  db.sequelize.close()
-})
+  db.sequelize.close();
+});
 
-describe("Users endpoints tests", () => {
-  it("creates and gets a user", async done => {
+describe('Users endpoints tests', () => {
+  it('creates and gets a user', async done => {
     // create a user
     await request(app)
-      .post("/api/users")
-      .send({ name: "John Doe", age: 30 })
+      .post('/api/users')
+      .send({ name: 'John Doe', age: 30 });
     // get the created user
-    const response = await request(app).get("/api/users")
-    expect(response.status).toBe(200)
-    expect(response.body.length).toBe(1)
-    expect(response.body[0].name).toBe("John Doe")
-    expect(response.body[0].age).toBe(30)
-    done()
-  })
-})
+    const response = await request(app).get('/api/users');
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(1);
+    expect(response.body[0].name).toBe('John Doe');
+    expect(response.body[0].age).toBe(30);
+    done();
+  });
+});

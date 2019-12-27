@@ -1,15 +1,15 @@
-const db = require("./db/models")
-const app = require("./app")
+const db = require('./db/models');
+const app = require('./app');
 
-const PORT = process.env.PORT || 9000
-;(async () => {
+const PORT = process.env.PORT || 9000;
+(async () => {
   try {
-    await db.sequelize.authenticate()
-    console.log("Connection has been established successfully.")
+    await db.sequelize.authenticate();
+    console.log('Connection has been established successfully.');
     app.listen(PORT, () => {
-      console.log(`App is up and running. Listening on port ${PORT}`)
-    })
+      console.log(`App is up and running. Listening on port ${PORT}`);
+    });
   } catch (error) {
-    console.error("Unable to connect to the database:", error)
+    console.error('Unable to connect to the database:', error);
   }
-})()
+})();

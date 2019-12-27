@@ -1,4 +1,4 @@
 module.exports = {
-  globalSetup: "<rootDir>/globalJestSetup.js",
-  globalTeardown: "<rootDir>/globalJestTeardown.js",
-}
+  globalSetup: '<rootDir>/globalJestSetup.js',
+  globalTeardown: '<rootDir>/globalJestTeardown.js',
+};
