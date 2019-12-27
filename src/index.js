@@ -25,7 +25,12 @@ function checkProjectName() {
   return projectName;
 }
 
-const excludePackageJson = file => !file.includes('/package.json');
+const filterFiles = file =>
+  !file.includes('/package.json') ||
+  !file.includes('/README.md') ||
+  !file.includes('/node_modules') ||
+  !file.includes('/coverage') ||
+  !file.includes('/build');
 
 function createProjectTemplate(projectName) {
   const frontendSource = path.join(__dirname, '../packages/react-ts');
@@ -33,22 +38,28 @@ function createProjectTemplate(projectName) {
   const destinationPath = path.resolve(projectName);
   console.log(chalk.cyan('Project will be created at:'));
   console.log(chalk.cyan(destinationPath + '\n'));
+  // Scafold application
   fs.mkdirsSync(destinationPath);
-  fs.copySync(frontendSource, destinationPath, { filter: excludePackageJson });
-  fs.copySync(backendSource, destinationPath, { filter: excludePackageJson });
+  fs.copySync(frontendSource, destinationPath, { filter: filterFiles });
+  fs.copySync(backendSource, destinationPath, { filter: filterFiles });
+  // Create package.json
   const frontendPackageJson = fs.readFileSync(path.join(frontendSource, 'package.json'));
   const backendPackageJson = fs.readFileSync(path.join(backendSource, 'package.json'));
   const frontendPackageObject = JSON.parse(frontendPackageJson);
   const backendPackageObject = JSON.parse(backendPackageJson);
   const mergedPackageObject = { ...deepMerge(frontendPackageObject, backendPackageObject), name: projectName };
   fs.writeFileSync(path.join(destinationPath, 'package.json'), JSON.stringify(mergedPackageObject, null, 2));
+  // Create README.md
+  const frontendReadme = fs.readFileSync(path.join(frontendSource, 'README.md'), 'utf8');
+  const backendReadme = fs.readFileSync(path.join(backendSource, 'README.md'), 'utf8');
+  fs.writeFileSync(path.join(destinationPath, 'README.md'), `${frontendReadme}\n\n${backendReadme}`);
 }
 
 try {
   useYarn();
   const projectName = checkProjectName();
   createProjectTemplate(projectName);
-  cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
+  // cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
 } catch (e) {
   console.log(chalk.red(e));
   process.exit(1);
