@@ -8,9 +8,11 @@ const deepMerge = require('deepmerge');
 function useYarn() {
   try {
     cp.execSync('yarnpkg --version', { stdio: 'ignore' });
-    console.log(chalk.cyan('Yarn found! You\'re good to go!'));
+    console.log(chalk.cyan("Yarn found! You're good to go!"));
   } catch (e) {
-    console.log(chalk.red('Yarn not found. Please go to https://yarnpkg.com/ install yarn and try again.'));
+    console.log(
+      chalk.red('Yarn not found. Please go to https://yarnpkg.com/ install yarn and try again.'),
+    );
     process.exit(1);
   }
 }
@@ -47,12 +49,21 @@ function createProjectTemplate(projectName) {
   const backendPackageJson = fs.readFileSync(path.join(backendSource, 'package.json'));
   const frontendPackageObject = JSON.parse(frontendPackageJson);
   const backendPackageObject = JSON.parse(backendPackageJson);
-  const mergedPackageObject = { ...deepMerge(frontendPackageObject, backendPackageObject), name: projectName };
-  fs.writeFileSync(path.join(destinationPath, 'package.json'), JSON.stringify(mergedPackageObject, null, 2));
+  const mergedPackageObject = {
+    ...deepMerge(frontendPackageObject, backendPackageObject),
+    name: projectName,
+  };
+  fs.writeFileSync(
+    path.join(destinationPath, 'package.json'),
+    JSON.stringify(mergedPackageObject, null, 2),
+  );
   // Create README.md
   const frontendReadme = fs.readFileSync(path.join(frontendSource, 'README.md'), 'utf8');
   const backendReadme = fs.readFileSync(path.join(backendSource, 'README.md'), 'utf8');
-  fs.writeFileSync(path.join(destinationPath, 'README.md'), `${frontendReadme}\n\n${backendReadme}`);
+  fs.writeFileSync(
+    path.join(destinationPath, 'README.md'),
+    `${frontendReadme}\n\n${backendReadme}`,
+  );
 }
 
 try {

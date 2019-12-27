@@ -4,12 +4,26 @@
   "bin": "./src/index.js",
   "license": "MIT",
   "devDependencies": {
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
     "rimraf": "^3.0.0"
   },
   "dependencies": {
     "chalk": "^3.0.0",
     "deepmerge": "^4.2.2",
     "fs-extra": "^8.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{tsx,ts,js,jsx,css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "scripts": {
     "create-sample": "rimraf sample-app && node src/index.js sample-app"
