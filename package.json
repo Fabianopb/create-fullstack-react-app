@@ -4,6 +4,9 @@
   "bin": "./src/index.js",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "husky": "^3.1.0",
     "lerna": "^3.19.0",
     "lint-staged": "^9.5.0",
@@ -22,7 +25,7 @@
   },
   "lint-staged": {
     "*.{tsx,ts,js,jsx,css}": [
-      "prettier --write",
+      "eslint --fix",
       "git add"
     ]
   },
