@@ -1,7 +1,8 @@
-/node_modules
-/build
-/coverage
+node_modules
+build
+coverage
 /sample-app
+/packages/**/yarn.lock
 
 .DS_Store
 yarn-debug.log*
