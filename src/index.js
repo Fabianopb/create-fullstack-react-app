@@ -4,11 +4,12 @@ const cp = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
 const deepMerge = require('deepmerge');
+const inquirer = require('inquirer');
 
 function useYarn() {
   try {
     cp.execSync('yarnpkg --version', { stdio: 'ignore' });
-    console.log(chalk.cyan("Yarn found! You're good to go!"));
+    console.log(chalk.cyan("Yarn found! You're good to go!\n"));
   } catch (e) {
     console.log(
       chalk.red('Yarn not found. Please go to https://yarnpkg.com/ install yarn and try again.'),
@@ -34,9 +35,13 @@ const filterFiles = file =>
   !file.includes('coverage') &&
   !file.includes('build');
 
-function createProjectTemplate(projectName) {
+function createProjectTemplate(projectName, database) {
+  const backendSource = path.join(__dirname, `../packages/${database}-server`);
+  if (!fs.existsSync(backendSource)) {
+    console.log(chalk.red(`${database} setup not found! This should never happen!\n`));
+    process.exit(1);
+  }
   const frontendSource = path.join(__dirname, '../packages/react-ts');
-  const backendSource = path.join(__dirname, '../packages/postgresql-server');
   const destinationPath = path.resolve(projectName);
   console.log(chalk.cyan('Project will be created at:'));
   console.log(chalk.cyan(destinationPath + '\n'));
@@ -66,12 +71,23 @@ function createProjectTemplate(projectName) {
   );
 }
 
-try {
-  useYarn();
-  const projectName = checkProjectName();
-  createProjectTemplate(projectName);
-  cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
-} catch (e) {
-  console.log(chalk.red(e));
-  process.exit(1);
-}
+(async () => {
+  try {
+    useYarn();
+    const projectName = checkProjectName();
+    const answers = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'database',
+        message: 'What database do you want to use?',
+        choices: ['PostgreSQL', 'MongoDB'],
+        filter: val => val.toLowerCase(),
+      },
+    ]);
+    createProjectTemplate(projectName, answers.database);
+    // cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
+  } catch (e) {
+    console.log(chalk.red(e));
+    process.exit(1);
+  }
+})();
