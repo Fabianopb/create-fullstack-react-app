@@ -31,6 +31,7 @@
   },
   "scripts": {
     "bootstrap": "npx lerna bootstrap",
-    "create-sample": "rimraf sample-app && node src/index.js sample-app"
+    "create-sample": "rimraf sample-app && node src/index.js sample-app",
+    "lint": "eslint ./src ./packages"
   }
 }
