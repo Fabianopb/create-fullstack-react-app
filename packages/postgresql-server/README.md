@@ -2,6 +2,8 @@
 
 This backend uses PostgreSQL, make sure you have it installed in your system.
 
+Change `username`, `password`, and `database` in `server/db/config.js` according to your own PostgreSQL configurations.
+
 start the server (might change depeding on your configurations):
 
 ```
