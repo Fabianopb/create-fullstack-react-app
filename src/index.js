@@ -28,11 +28,11 @@ function checkProjectName() {
 }
 
 const filterFiles = file =>
-  !file.includes('/package.json') ||
-  !file.includes('/README.md') ||
-  !file.includes('/node_modules') ||
-  !file.includes('/coverage') ||
-  !file.includes('/build');
+  !file.includes('/package.json') &&
+  !file.includes('/README.md') &&
+  !file.includes('node_modules') &&
+  !file.includes('coverage') &&
+  !file.includes('build');
 
 function createProjectTemplate(projectName) {
   const frontendSource = path.join(__dirname, '../packages/react-ts');
