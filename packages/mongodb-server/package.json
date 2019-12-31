@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.17.0",
+    "chalk": "^3.0.0",
     "mongodb-memory-server": "^6.2.1",
     "supertest": "^4.0.2"
   },
