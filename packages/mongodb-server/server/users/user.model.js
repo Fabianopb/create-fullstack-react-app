@@ -7,7 +7,7 @@ const userSchemaDef = {
     required: true,
   },
   age: {
-    type: Integer,
+    type: Number,
     required: true,
   },
 };
