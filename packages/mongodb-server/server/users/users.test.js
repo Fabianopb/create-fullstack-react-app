@@ -1,4 +1,4 @@
-const MongodbMemoryServer = require('mongodb-memory-server');
+const MongodbMemoryServer = require('mongodb-memory-server').default;
 const mongoose = require('mongoose');
 const request = require('supertest');
 const app = require('../app');
@@ -27,8 +27,8 @@ describe('/api/users tests', () => {
       .send({ name: 'John Doe', age: 34 });
     expect(postResponse.status).toBe(200);
 
-    const getResponse = await request(app).get('/api/users/profile');
+    const getResponse = await request(app).get('/api/users');
     expect(getResponse.status).toBe(200);
-    expect(getResponse.body.name).toBe('John Doe');
+    expect(getResponse.body).toEqual([expect.objectContaining({ name: 'John Doe', age: 34 })]);
   });
 });

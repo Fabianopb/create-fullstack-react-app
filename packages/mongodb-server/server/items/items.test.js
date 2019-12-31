@@ -1,4 +1,4 @@
-const MongodbMemoryServer = require('mongodb-memory-server');
+const MongodbMemoryServer = require('mongodb-memory-server').default;
 const mongoose = require('mongoose');
 const request = require('supertest');
 const app = require('../app');
