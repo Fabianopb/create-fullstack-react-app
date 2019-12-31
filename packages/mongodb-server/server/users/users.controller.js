@@ -14,9 +14,9 @@ router.route('/').post(bodyParser.json(), async (request, response) => {
   }
 });
 
-router.route('/').get(async (request, response) => {
-  const user = await User.findById(request.user._id);
-  return response.status(200).json(user);
+router.route('/').get(async (_, response) => {
+  const users = await User.find();
+  return response.status(200).json(users);
 });
 
 module.exports = router;

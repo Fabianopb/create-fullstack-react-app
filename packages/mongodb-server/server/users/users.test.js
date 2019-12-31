@@ -24,11 +24,11 @@ describe('/api/users tests', () => {
   it('should post and get a user', async () => {
     const postResponse = await request(app)
       .post('/api/users')
-      .send({ email: 'new@user.com', age: 34 });
+      .send({ name: 'John Doe', age: 34 });
     expect(postResponse.status).toBe(200);
 
     const getResponse = await request(app).get('/api/users/profile');
     expect(getResponse.status).toBe(200);
-    expect(getResponse.body.email).toBe('new@user.com');
+    expect(getResponse.body.name).toBe('John Doe');
   });
 });

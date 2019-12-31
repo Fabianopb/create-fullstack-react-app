@@ -1,14 +1,18 @@
+const mongoose = require('mongoose');
 const chalk = require('chalk');
 const Item = require('../server/items/item.model');
 const User = require('../server/users/user.model');
 
-const populateDatabase = async () => {
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/test_database';
+
+(async () => {
   try {
+    await mongoose.connect(url, { useNewUrlParser: true });
     const users = await User.find({});
     const items = await Item.find({});
     if (users.length === 0 && items.length === 0) {
       console.log(chalk.yellow('No users or items in the database, creating sample data...'));
-      const user = new User({ email: 'testuser@email.com', age: 34 });
+      const user = new User({ name: 'John Doe', age: 34 });
       await user.save();
       console.log(chalk.green('Sample user successfuly created!'));
       const newItems = [
@@ -25,7 +29,7 @@ const populateDatabase = async () => {
     }
   } catch (error) {
     console.log(chalk.red(error));
+  } finally {
+    await mongoose.disconnect();
   }
-};
-
-module.exports = populateDatabase;
+})();
