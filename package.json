@@ -31,6 +31,6 @@
   },
   "scripts": {
     "create-sample": "rimraf sample-app && node src/index.js sample-app",
-    "lint": "eslint ./src ./packages"
+    "lint": "eslint ./src ./templates"
   }
 }
