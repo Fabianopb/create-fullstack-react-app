@@ -1,7 +1,5 @@
 {
-  "name": "react-ts",
-  "version": "0.1.0",
-  "private": true,
+  "name": "react-frontend-ts",
   "proxy": "http://localhost:9000",
   "engines": {
     "node": ">=10.6.*",

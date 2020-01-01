@@ -1,6 +1,5 @@
 {
   "name": "mongodb-server",
-  "version": "0.1.0",
   "engines": {
     "node": ">=10.6.*",
     "yarn": ">=1.10.*"

@@ -41,7 +41,7 @@ function createProjectTemplate(projectName, database) {
     console.log(chalk.red(`${database} setup not found! This should never happen!\n`));
     process.exit(1);
   }
-  const frontendSource = path.join(__dirname, '../packages/react-ts');
+  const frontendSource = path.join(__dirname, '../packages/react-frontend-ts');
   const destinationPath = path.resolve(projectName);
   console.log(chalk.cyan('Project will be created at:'));
   console.log(chalk.cyan(destinationPath + '\n'));
@@ -57,6 +57,7 @@ function createProjectTemplate(projectName, database) {
   const mergedPackageObject = {
     ...deepMerge(frontendPackageObject, backendPackageObject),
     name: projectName,
+    version: '0.1.0',
   };
   fs.writeFileSync(
     path.join(destinationPath, 'package.json'),
