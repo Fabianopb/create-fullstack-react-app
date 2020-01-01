@@ -2,12 +2,11 @@ const mongoose = require('mongoose');
 const chalk = require('chalk');
 const Item = require('../server/items/item.model');
 const User = require('../server/users/user.model');
-
-const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/test_database';
+const config = require('../server/config');
 
 (async () => {
   try {
-    await mongoose.connect(url, {
+    await mongoose.connect(config.url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
