@@ -1,5 +1,6 @@
 {
   "name": "react-frontend-ts",
+  "version": "0.1.0",
   "proxy": "http://localhost:9000",
   "engines": {
     "node": ">=10.6.*",
