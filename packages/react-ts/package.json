@@ -1,6 +1,6 @@
 {
   "name": "cfra-react-frontend-ts",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "proxy": "http://localhost:9000",
   "engines": {
     "node": ">=10.6.*",
