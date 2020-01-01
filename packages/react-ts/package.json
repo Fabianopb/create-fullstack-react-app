@@ -1,5 +1,5 @@
 {
-  "name": "react-frontend-ts",
+  "name": "cfra-react-frontend-ts",
   "version": "0.2.1",
   "proxy": "http://localhost:9000",
   "engines": {
@@ -41,5 +41,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "gitHead": "96dce1aae9780e8c9a8e1975163b3b228fa5bf47"
 }
