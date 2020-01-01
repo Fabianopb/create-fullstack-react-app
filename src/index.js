@@ -71,21 +71,24 @@ function createProjectTemplate(projectName, database) {
   );
 }
 
-(async () => {
+(() => {
   try {
     useYarn();
     const projectName = checkProjectName();
-    const answers = await inquirer.prompt([
-      {
-        type: 'list',
-        name: 'database',
-        message: 'What database do you want to use?',
-        choices: ['PostgreSQL', 'MongoDB'],
-        filter: val => val.toLowerCase(),
-      },
-    ]);
-    createProjectTemplate(projectName, answers.database);
-    cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
+    inquirer
+      .prompt([
+        {
+          type: 'list',
+          name: 'database',
+          message: 'What database do you want to use?',
+          choices: ['PostgreSQL', 'MongoDB'],
+          filter: val => val.toLowerCase(),
+        },
+      ])
+      .then(answers => {
+        createProjectTemplate(projectName, answers.database);
+        cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
+      });
   } catch (e) {
     console.log(chalk.red(e));
     process.exit(1);
