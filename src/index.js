@@ -28,21 +28,24 @@ function checkProjectName() {
   return projectName;
 }
 
-const filterFiles = file =>
-  !file.includes('/package.json') &&
-  !file.includes('/README.md') &&
-  !file.includes('node_modules') &&
-  !file.includes('coverage') &&
-  !file.includes('build');
+const filterFiles = source =>
+  !source.includes('/package.json') &&
+  !source.includes('/README.md') &&
+  !source.includes('node_modules') &&
+  !source.includes('coverage') &&
+  !source.includes('build');
 
 function createProjectTemplate(projectName, database) {
   const backendSource = path.join(__dirname, `../templates/${database}-server`);
+  console.log(backendSource);
   if (!fs.existsSync(backendSource)) {
     console.log(chalk.red(`${database} setup not found! This should never happen!\n`));
     process.exit(1);
   }
   const frontendSource = path.join(__dirname, '../templates/react-ts');
+  console.log(frontendSource);
   const destinationPath = path.resolve(projectName);
+  console.log(destinationPath);
   console.log(chalk.cyan('Project will be created at:'));
   console.log(chalk.cyan(destinationPath + '\n'));
   // Scafold application
