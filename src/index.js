@@ -36,12 +36,12 @@ const filterFiles = file =>
   !file.includes('build');
 
 function createProjectTemplate(projectName, database) {
-  const backendSource = path.join(__dirname, `../packages/${database}-server`);
+  const backendSource = path.join(__dirname, `../templates/${database}-server`);
   if (!fs.existsSync(backendSource)) {
     console.log(chalk.red(`${database} setup not found! This should never happen!\n`));
     process.exit(1);
   }
-  const frontendSource = path.join(__dirname, '../packages/react-ts');
+  const frontendSource = path.join(__dirname, '../templates/react-ts');
   const destinationPath = path.resolve(projectName);
   console.log(chalk.cyan('Project will be created at:'));
   console.log(chalk.cyan(destinationPath + '\n'));
