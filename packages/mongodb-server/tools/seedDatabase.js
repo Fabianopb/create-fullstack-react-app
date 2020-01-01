@@ -7,7 +7,11 @@ const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/test_database'
 
 (async () => {
   try {
-    await mongoose.connect(url, { useNewUrlParser: true });
+    await mongoose.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    });
     const users = await User.find({});
     const items = await Item.find({});
     if (users.length === 0 && items.length === 0) {
