@@ -1,7 +1,7 @@
 {
   "version": "0.2.5",
   "name": "create-fullstack-react-app",
-  "bin": "./src/index.js",
+  "bin": "./src/create-fullstack-react-app.js",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^6.8.0",
