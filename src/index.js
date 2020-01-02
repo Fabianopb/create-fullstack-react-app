@@ -53,6 +53,8 @@ function createProjectTemplate(projectName, database) {
   fs.mkdirsSync(destinationPath);
   fs.copySync(frontendSource, destinationPath, { filter: filterFiles });
   fs.copySync(backendSource, destinationPath, { filter: filterFiles });
+  // Rename gitignore to .gitignore
+  fs.moveSync(path.join(destinationPath, 'gitignore'), path.join(destinationPath('.gitignore')));
   // Create package.json
   const frontendPackageJson = fs.readFileSync(path.join(frontendSource, 'package.json'));
   const backendPackageJson = fs.readFileSync(path.join(backendSource, 'package.json'));
@@ -73,8 +75,6 @@ function createProjectTemplate(projectName, database) {
     path.join(destinationPath, 'README.md'),
     `${frontendReadme}\n\n${backendReadme}`,
   );
-  const gitignoreContent = fs.readFileSync(path.join(frontendSource, '.gitignore'), 'utf8');
-  fs.writeFileSync(path.join(destinationPath, '.gitignore'), gitignoreContent);
 }
 
 (async () => {
