@@ -54,7 +54,7 @@ function createProjectTemplate(projectName, database) {
   fs.copySync(frontendSource, destinationPath, { filter: filterFiles });
   fs.copySync(backendSource, destinationPath, { filter: filterFiles });
   // Rename gitignore to .gitignore
-  fs.moveSync(path.join(destinationPath, 'gitignore'), path.join(destinationPath('.gitignore')));
+  fs.moveSync(path.join(destinationPath, 'gitignore'), path.join(destinationPath, '.gitignore'));
   // Create package.json
   const frontendPackageJson = fs.readFileSync(path.join(frontendSource, 'package.json'));
   const backendPackageJson = fs.readFileSync(path.join(backendSource, 'package.json'));
