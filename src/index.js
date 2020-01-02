@@ -41,15 +41,12 @@ const filterFiles = source => {
 
 function createProjectTemplate(projectName, database) {
   const backendSource = path.join(__dirname, `../templates/${database}-server`);
-  console.log(backendSource);
   if (!fs.existsSync(backendSource)) {
     console.log(chalk.red(`${database} setup not found! This should never happen!\n`));
     process.exit(1);
   }
   const frontendSource = path.join(__dirname, '../templates/react-ts');
-  console.log(frontendSource);
   const destinationPath = path.resolve(projectName);
-  console.log(destinationPath);
   console.log(chalk.cyan('Project will be created at:'));
   console.log(chalk.cyan(destinationPath + '\n'));
   // Scafold application
