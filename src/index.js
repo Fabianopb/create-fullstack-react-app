@@ -28,12 +28,16 @@ function checkProjectName() {
   return projectName;
 }
 
-const filterFiles = source =>
-  !source.includes('/package.json') &&
-  !source.includes('/README.md') &&
-  !source.includes('node_modules') &&
-  !source.includes('coverage') &&
-  !source.includes('build');
+const filterFiles = source => {
+  const templateSrc = source.split('template')[1];
+  return (
+    !templateSrc.includes('/package.json') &&
+    !templateSrc.includes('/README.md') &&
+    !templateSrc.includes('/node_modules') &&
+    !templateSrc.includes('/coverage') &&
+    !templateSrc.includes('/build')
+  );
+};
 
 function createProjectTemplate(projectName, database) {
   const backendSource = path.join(__dirname, `../templates/${database}-server`);
