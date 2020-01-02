@@ -73,6 +73,8 @@ function createProjectTemplate(projectName, database) {
     path.join(destinationPath, 'README.md'),
     `${frontendReadme}\n\n${backendReadme}`,
   );
+  const gitignoreContent = fs.readFileSync(path.join(frontendSource, '.gitignore'), 'utf8');
+  fs.writeFileSync(path.join(destinationPath, '.gitignore'), gitignoreContent);
 }
 
 (async () => {
