@@ -1,5 +1,5 @@
 {
-  "version": "0.2.11",
+  "version": "0.2.12",
   "name": "create-fullstack-react-app",
   "bin": "./src/index.js",
   "license": "MIT",
