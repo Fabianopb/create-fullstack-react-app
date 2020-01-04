@@ -4,9 +4,9 @@ const cp = require('child_process');
 
 (() => {
   console.log(
-    chalk.cyan('creating '),
-    chalk.cyan('MongoDB'),
-    chalk.cyan(' sample from template...'),
+    chalk.cyan('creating'),
+    chalk.yellow('MongoDB'),
+    chalk.cyan('sample from template...'),
   );
   cp.execSync('yarn create-sample mongodb', { stdio: 'inherit' });
 
