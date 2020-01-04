@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
-const app = require('./app');
-const config = require('./config');
+import { connect } from 'mongoose';
+import app from './app';
+import { port, url } from './config';
 
 (async () => {
-  await mongoose.connect(config.url, {
+  await connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
   });
-  app.listen(config.port);
-  console.log(`App listening on port ${config.port}...`);
+  app.listen(port);
+  console.log(`App listening on port ${port}...`);
 })();
