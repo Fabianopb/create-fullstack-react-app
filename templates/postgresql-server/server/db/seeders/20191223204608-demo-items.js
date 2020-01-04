@@ -3,7 +3,7 @@ const db = require('../models');
 
 const date = new Date();
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: async queryInterface => {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       const users = await db.User.findAll({ raw: true });
@@ -43,7 +43,7 @@ module.exports = {
     }
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async queryInterface => {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       await queryInterface.bulkDelete('Items', null, { transaction });
