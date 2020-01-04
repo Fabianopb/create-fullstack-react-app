@@ -1,8 +1,8 @@
-const MongodbMemoryServer = require('mongodb-memory-server').default;
-const mongoose = require('mongoose');
-const request = require('supertest');
-const app = require('../app');
-const Item = require('./item.model');
+import MongodbMemoryServer from 'mongodb-memory-server';
+import mongoose from 'mongoose';
+import request from 'supertest';
+import app from '../app';
+import Item from './item.model';
 
 describe('/api/items tests', () => {
   const mongod = new MongodbMemoryServer();
