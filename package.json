@@ -30,7 +30,9 @@
     ]
   },
   "scripts": {
-    "create-sample": "rimraf sample-app && node src/index.js sample-app",
-    "lint": "eslint ./src ./templates"
+    "create-sample": "yarn clean && node src/index.js sample-app",
+    "lint": "eslint ./src ./templates",
+    "e2e": "node test/e2e.js",
+    "clean": "rimraf sample-app"
   }
 }
