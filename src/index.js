@@ -18,14 +18,12 @@ function useYarn() {
   }
 }
 
-function checkProjectName() {
-  const projectName = process.argv[2];
+function checkProjectName(projectName) {
   if (!projectName) {
     console.log(chalk.red('Project name has to be specified. Try for example:'));
     console.log(`  ${chalk.cyan('npx create-fullstack-react-app')} ${chalk.yellow('my-app')}\n`);
     process.exit(1);
   }
-  return projectName;
 }
 
 const filterFiles = source => {
@@ -79,17 +77,21 @@ function createProjectTemplate(projectName, database) {
 
 (async () => {
   try {
+    const projectName = process.argv[2];
+    const database = process.argv[3];
     useYarn();
-    const projectName = checkProjectName();
-    const answers = await inquirer.prompt([
-      {
-        type: 'list',
-        name: 'database',
-        message: 'What database do you want to use?',
-        choices: ['PostgreSQL', 'MongoDB'],
-        filter: val => val.toLowerCase(),
-      },
-    ]);
+    checkProjectName(projectName);
+    const answers = database
+      ? { database }
+      : await inquirer.prompt([
+          {
+            type: 'list',
+            name: 'database',
+            message: 'What database do you want to use?',
+            choices: ['PostgreSQL', 'MongoDB'],
+            filter: val => val.toLowerCase(),
+          },
+        ]);
     createProjectTemplate(projectName, answers.database);
     cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
   } catch (e) {
