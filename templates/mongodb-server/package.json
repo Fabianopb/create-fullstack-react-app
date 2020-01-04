@@ -17,6 +17,7 @@
     "@babel/node": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "axios-mock-adapter": "^1.17.0",
+    "babel-preset-minify": "^0.5.1",
     "chalk": "^3.0.0",
     "jest": "^24.9.0",
     "mongodb-memory-server": "^6.2.1",
@@ -27,6 +28,6 @@
     "start-server": "cd build-server && node server.js",
     "dev-server": "nodemon --exec babel-node server/server.js",
     "test-server": "jest --config=server/jest.config.js /server --coverage",
-    "build-server": "babel ./server --out-dir build-server --ignore \"server/coverage\",\"server/**/*.test.js\",\"server/jest.config.js\""
+    "build-server": "babel ./server --out-dir build-server --ignore \"server/coverage\",\"server/**/*.test.js\",\"server/jest.config.js\" --presets minify"
   }
 }
