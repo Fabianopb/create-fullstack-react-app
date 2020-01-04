@@ -1,6 +1,6 @@
 # Create Fullstack React App
 
-![](https://img.shields.io/npm/v/create-fullstack-ts-app.svg) ![](https://img.shields.io/travis/com/Fabianopb/create-fullstack-ts-app.svg) ![](https://img.shields.io/npm/dt/create-fullstack-ts-app.svg) ![](https://img.shields.io/github/license/Fabianopb/create-fullstack-ts-app.svg)
+![](https://img.shields.io/npm/v/create-fullstack-react-app.svg) ![](https://img.shields.io/travis/com/Fabianopb/create-fullstack-react-app.svg) ![](https://img.shields.io/npm/dt/create-fullstack-react-app.svg) ![](https://img.shields.io/github/license/Fabianopb/create-fullstack-react-app.svg)
 
 Bootstrap a React application with a backend in Express, and choose between PostgreSQL or MongoDB.
 
