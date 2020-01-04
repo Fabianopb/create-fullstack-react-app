@@ -1,8 +1,8 @@
-const bodyParser = require('body-parser');
-const express = require('express');
-const Item = require('./item.model');
+import bodyParser from 'body-parser';
+import { Router } from 'express';
+import Item from './item.model';
 
-const router = express.Router();
+const router = Router();
 
 router.route('/').get(async (_, response) => {
   const items = await Item.find();
@@ -19,4 +19,4 @@ router.route('/').post(bodyParser.json(), async (request, response) => {
   }
 });
 
-module.exports = router;
+export default router;
