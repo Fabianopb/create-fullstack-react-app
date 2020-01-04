@@ -1,5 +1,6 @@
 node_modules
 build
+build-server
 coverage
 /sample-app
 /packages/**/yarn.lock

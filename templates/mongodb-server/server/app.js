@@ -15,11 +15,11 @@ app.get('/api', (_, res) => {
 });
 
 // Declare the path to frontend's static assets
-app.use(express.static(resolve('..', 'frontend', 'build')));
+app.use(express.static(resolve('..', 'build')));
 
 // Intercept requests to return the frontend's static entry point
 app.get('*', (_, response) => {
-  response.sendFile(resolve('..', 'frontend', 'build', 'index.html'));
+  response.sendFile(resolve('..', 'build', 'index.html'));
 });
 
 export default app;

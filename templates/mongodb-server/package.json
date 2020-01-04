@@ -12,6 +12,7 @@
     "mongoose": "^5.8.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
@@ -23,8 +24,9 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "start-server": "node server/server.js",
+    "start-server": "node build-server/server.js",
     "dev-server": "nodemon --exec babel-node server/server.js",
-    "test-server": "jest --config=server/jest.config.js /server --coverage"
+    "test-server": "jest --config=server/jest.config.js /server --coverage",
+    "build-server": "babel ./server --out-dir build-server --ignore \"server/coverage\",\"server/**/*.test.js\",\"server/jest.config.js\""
   }
 }
