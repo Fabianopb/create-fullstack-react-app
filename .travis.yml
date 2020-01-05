@@ -3,8 +3,6 @@ node_js:
   - 10
 services:
   - postgresql
-before_script:
-  - cp database.yml.travis database.yml
 script:
   - yarn lint
   - yarn e2e
