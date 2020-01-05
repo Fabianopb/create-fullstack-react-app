@@ -1,4 +1,4 @@
-import db from './db/models';
+import db from './models';
 import app from './app';
 
 const PORT = process.env.PORT || 9000;

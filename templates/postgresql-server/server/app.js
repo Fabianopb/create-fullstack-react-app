@@ -1,8 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { resolve } from 'path';
-import usersController from './db/controllers/users';
-import itemsController from './db/controllers/items';
+import usersController from './controllers/users';
+import itemsController from './controllers/items';
 
 const app = express();
 
