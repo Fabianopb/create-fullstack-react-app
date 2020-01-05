@@ -20,10 +20,10 @@ app.get('/api', (_, res) => {
   res.send('Hello, world!');
 });
 
-app.use(express.static(resolve('build')));
+app.use(express.static(resolve('..', 'build')));
 
 app.all('*', (_, response) => {
-  response.sendFile(resolve('build', 'index.html'));
+  response.sendFile(resolve('..', 'build', 'index.html'));
 });
 
 export default app;
