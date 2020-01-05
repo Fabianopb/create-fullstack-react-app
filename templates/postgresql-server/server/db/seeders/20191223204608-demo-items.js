@@ -1,8 +1,8 @@
-'use strict';
-const db = require('../models');
+import db from '../../models';
 
 const date = new Date();
-module.exports = {
+
+const seed = {
   up: async queryInterface => {
     const transaction = await queryInterface.sequelize.transaction();
     try {
@@ -54,3 +54,5 @@ module.exports = {
     }
   },
 };
+
+export default seed;

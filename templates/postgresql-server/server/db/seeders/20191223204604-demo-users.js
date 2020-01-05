@@ -1,6 +1,6 @@
-'use strict';
 const date = new Date();
-module.exports = {
+
+const seed = {
   up: async queryInterface => {
     const transaction = await queryInterface.sequelize.transaction();
     try {
@@ -40,3 +40,5 @@ module.exports = {
     }
   },
 };
+
+export default seed;
