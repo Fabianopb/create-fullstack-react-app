@@ -1,6 +1,6 @@
-const request = require('supertest');
-const app = require('../../app');
-const db = require('../models');
+import request from 'supertest';
+import app from '../../app';
+import db from '../models';
 
 afterAll(() => {
   db.sequelize.close();

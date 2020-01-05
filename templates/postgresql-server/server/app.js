@@ -1,8 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const usersController = require('./db/controllers/users');
-const itemsController = require('./db/controllers/items');
+import express from 'express';
+import bodyParser from 'body-parser';
+import { resolve } from 'path';
+import usersController from './db/controllers/users';
+import itemsController from './db/controllers/items';
 
 const app = express();
 
@@ -20,10 +20,10 @@ app.get('/api', (_, res) => {
   res.send('Hello, world!');
 });
 
-app.use(express.static(path.resolve('build')));
+app.use(express.static(resolve('build')));
 
 app.all('*', (_, response) => {
-  response.sendFile(path.resolve('build', 'index.html'));
+  response.sendFile(resolve('build', 'index.html'));
 });
 
-module.exports = app;
+export default app;

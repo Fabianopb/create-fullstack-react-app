@@ -1,4 +1,4 @@
-const db = require('../models');
+import db from '../models';
 
 const usersController = {
   findAll: async (_, res) => {
@@ -19,4 +19,4 @@ const usersController = {
   },
 };
 
-module.exports = usersController;
+export default usersController;
