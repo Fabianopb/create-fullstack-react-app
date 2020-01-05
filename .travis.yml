@@ -1,5 +1,10 @@
 language: node_js
 node_js:
   - 10
+services:
+  - postgresql
+before_script:
+  - cp config/database.yml.travis config/database.yml
 script:
+  - yarn lint
   - yarn e2e

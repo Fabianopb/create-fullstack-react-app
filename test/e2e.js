@@ -8,7 +8,7 @@ const cp = require('child_process');
     chalk.yellow('MongoDB'),
     chalk.cyan('sample from template...'),
   );
-  cp.execSync('yarn create-sample mongodb', { stdio: 'inherit' });
+  cp.execSync('yarn create-sample postgresql', { stdio: 'inherit' });
 
   console.log(chalk.cyan('Testing frontend...'));
   cp.execSync('yarn test', { cwd: 'sample-app', stdio: 'inherit' });

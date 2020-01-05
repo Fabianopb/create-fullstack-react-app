@@ -1,0 +1,3 @@
+test:
+  adapter: database_username
+  database: database_test
