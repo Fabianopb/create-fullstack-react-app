@@ -1,6 +1,12 @@
 {
   "version": "0.3.0",
   "name": "create-fullstack-react-app",
+  "keywords": [
+    "react",
+    "fullstack",
+    "express"
+  ],
+  "description": "Fullstack React application generator.",
   "bin": "./src/index.js",
   "license": "MIT",
   "devDependencies": {
