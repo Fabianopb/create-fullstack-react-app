@@ -14,12 +14,20 @@
     "sequelize": "^5.19.8"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "axios-mock-adapter": "^1.17.0",
+    "babel-preset-minify": "^0.5.1",
+    "nodemon": "^2.0.2",
     "sequelize-cli": "^5.5.0",
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "start-server": "NODE_ENV=development node server/server.js",
-    "test-server": "jest --config=server/jest.config.js /server --coverage"
+    "start-server": "cd build-server && node server.js",
+    "dev-server": "nodemon --exec babel-node server/server.js",
+    "test-server": "jest --config=server/jest.config.js /server --coverage",
+    "build-server": "babel ./server --out-dir build-server --ignore \"server/coverage\",\"server/**/*.test.js\",\"server/jest.config.js\" --presets minify"
   }
 }
