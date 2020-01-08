@@ -23,10 +23,9 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject"
+    "start-client": "react-scripts start",
+    "build-client": "react-scripts build",
+    "test-client": "react-scripts test --coverage --watchAll=false"
   },
   "eslintConfig": {
     "extends": "react-app"
