@@ -13,8 +13,7 @@ app.use('/api/users', usersRouter);
 
 const itemsRouter = express.Router();
 itemsRouter.get('/', itemsController.findAll);
-itemsRouter.post('/', bodyParser.json(), itemsController.create);
-app.use('/api/items', itemsRouter);
+itemsRouter.post('/', bodyParser.json(), itemsController.create);app.use('/api/items', itemsRouter);
 
 app.use(express.static(resolve('..', 'build')));
 
