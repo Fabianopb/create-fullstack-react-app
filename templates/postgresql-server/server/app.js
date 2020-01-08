@@ -16,10 +16,6 @@ itemsRouter.get('/', itemsController.findAll);
 itemsRouter.post('/', bodyParser.json(), itemsController.create);
 app.use('/api/items', itemsRouter);
 
-app.get('/api', (_, res) => {
-  res.send('Hello, world!');
-});
-
 app.use(express.static(resolve('..', 'build')));
 
 app.all('*', (_, response) => {

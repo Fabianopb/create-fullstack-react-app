@@ -10,10 +10,6 @@ const app = express();
 app.use('/api/items', itemsController);
 app.use('/api/users', usersController);
 
-app.get('/api', (_, res) => {
-  res.send('Hello, world!');
-});
-
 // Declare the path to frontend's static assets
 app.use(express.static(resolve('..', 'build')));
 
