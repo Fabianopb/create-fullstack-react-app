@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+type User = {
+  name: string;
+  age: number;
+}
+
 const App: React.FC = () => {
+  const [users, setUsers] = useState<User[]>();
+
+  const getUsers = () => {
+    fetch('/api/users').then(res => res.json()).then(setUsers);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +29,11 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
+        <br />
+        <button className="App-link" onClick={getUsers}>Test endpoint</button>
+        {users && <ul>
+          {users.map(user => <li key={user.name}>{`${user.name}, ${user.age} years old`}</li>)}
+        </ul>}
       </header>
     </div>
   );
