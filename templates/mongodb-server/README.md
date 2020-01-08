@@ -11,7 +11,7 @@ node tools/seedDatabase.js
 
 Start development server:
 ```
-yarn dev-server
+yarn start-server
 ```
 
 Run server tests:
@@ -26,5 +26,5 @@ yarn build-server
 
 Start server in production environment:
 ```
-yarn start-server
+yarn serve
 ```

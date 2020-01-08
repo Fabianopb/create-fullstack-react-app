@@ -26,7 +26,7 @@ npx sequelize-cli db:seed:all
 
 Start development server:
 ```
-yarn dev-server
+yarn start-server
 ```
 
 Run server tests:
@@ -41,7 +41,7 @@ yarn build-server
 
 Start server in production environment:
 ```
-yarn start-server
+yarn serve
 ```
 
 When needed, you can stop the Postgres server using (might change depeding on your configurations):
