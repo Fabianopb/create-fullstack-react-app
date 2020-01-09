@@ -1,5 +1,6 @@
 node_modules
 templates/react-ts
+templates/react-js
 build
 build-server
 sample-app

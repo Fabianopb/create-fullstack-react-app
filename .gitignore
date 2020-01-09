@@ -3,7 +3,6 @@ build
 build-server
 coverage
 /sample-app
-/packages/**/yarn.lock
 
 .DS_Store
 yarn-debug.log*
