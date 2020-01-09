@@ -9,6 +9,13 @@ Create your fullstack application:
 npx create-fullstack-react-app my-app
 ```
 
+You will be prompted to choose your React frontend:
+```
+? What frontend do you want to use? (Use arrow keys)
+❯ Traditional ReactJS (jsx) 
+  React with TypeScript (tsx)
+```
+
 You will be prompted to choose your database:
 ```
 ? What database do you want to use? (Use arrow keys)
