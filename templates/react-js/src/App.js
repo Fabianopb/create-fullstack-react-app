@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [users, setUsers] = useState();
+
+  const getUsers = () => {
+    fetch('/api/users').then(res => res.json()).then(setUsers);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +24,11 @@ function App() {
         >
           Learn React
         </a>
+        <br />
+        <button className="App-link" onClick={getUsers}>Test endpoint</button>
+        {users && <ul>
+          {users.map(user => <li key={user.name}>{`${user.name}, ${user.age} years old`}</li>)}
+        </ul>}
       </header>
     </div>
   );
