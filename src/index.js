@@ -37,13 +37,17 @@ const filterFiles = source => {
   );
 };
 
-function createProjectTemplate(projectName, database) {
-  const backendSource = path.join(__dirname, `../templates/${database}-server`);
+function createProjectTemplate(projectName, frontend, database) {
+  const backendSource = path.join(__dirname, `../templates/${database}`);
   if (!fs.existsSync(backendSource)) {
-    console.log(chalk.red(`${database} setup not found! This should never happen!\n`));
+    console.log(chalk.red(`Backend '${database}' setup not found!\n`));
     process.exit(1);
   }
-  const frontendSource = path.join(__dirname, '../templates/react-ts');
+  const frontendSource = path.join(__dirname, `../templates/${frontend}`);
+  if (!fs.existsSync(frontendSource)) {
+    console.log(chalk.red(`Frontend '${frontend}' setup not found!\n`));
+    process.exit(1);
+  }
   const destinationPath = path.resolve(projectName);
   console.log(chalk.cyan('Project will be created at:'));
   console.log(chalk.cyan(destinationPath + '\n'));
@@ -78,21 +82,37 @@ function createProjectTemplate(projectName, database) {
 (async () => {
   try {
     const projectName = process.argv[2];
-    const database = process.argv[3];
+    const frontend = process.argv[3];
+    const database = process.argv[4];
     useYarn();
     checkProjectName(projectName);
-    const answers = database
+    const frontendAnswer = frontend
+      ? { frontend }
+      : await inquirer.prompt([
+          {
+            type: 'list',
+            name: 'frontend',
+            message: 'What frontend do you want to use?',
+            choices: [
+              { name: 'Traditional ReactJS (jsx)', value: 'react-js' },
+              { name: 'React with TypeScript (tsx)', value: 'react-ts' },
+            ],
+          },
+        ]);
+    const backendAnswer = database
       ? { database }
       : await inquirer.prompt([
           {
             type: 'list',
             name: 'database',
             message: 'What database do you want to use?',
-            choices: ['PostgreSQL', 'MongoDB'],
-            filter: val => val.toLowerCase(),
+            choices: [
+              { name: 'PostgreSQL', value: 'postgresql-server' },
+              { name: 'MongoDB', value: 'mongodb-server' },
+            ],
           },
         ]);
-    createProjectTemplate(projectName, answers.database);
+    createProjectTemplate(projectName, frontendAnswer.frontend, backendAnswer.database);
     cp.spawn('yarn', ['install'], { cwd: projectName, stdio: 'inherit' });
   } catch (e) {
     console.log(chalk.red(e));
