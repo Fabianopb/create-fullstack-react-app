@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const deepMerge = require('deepmerge');
 const inquirer = require('inquirer');
+const { clientChoices, serverChoices } = require('./choices');
 
 function useYarn() {
   try {
@@ -93,10 +94,7 @@ function createProjectTemplate(projectName, frontend, database) {
             type: 'list',
             name: 'frontend',
             message: 'What frontend do you want to use?',
-            choices: [
-              { name: 'Traditional ReactJS (jsx)', value: 'react-js' },
-              { name: 'React with TypeScript (tsx)', value: 'react-ts' },
-            ],
+            choices: clientChoices,
           },
         ]);
     const backendAnswer = database
@@ -106,10 +104,7 @@ function createProjectTemplate(projectName, frontend, database) {
             type: 'list',
             name: 'database',
             message: 'What database do you want to use?',
-            choices: [
-              { name: 'PostgreSQL', value: 'postgresql-server' },
-              { name: 'MongoDB', value: 'mongodb-server' },
-            ],
+            choices: serverChoices,
           },
         ]);
     createProjectTemplate(projectName, frontendAnswer.frontend, backendAnswer.database);
