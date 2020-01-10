@@ -24,3 +24,5 @@ You will be prompted to choose your database:
 ```
 
 That's it! Enjoy!
+
+More info: https://levelup.gitconnected.com/create-a-fullstack-react-application-in-a-few-minutes-56cd1702cd22
