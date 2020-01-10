@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "create-fullstack-react-app",
   "keywords": [
     "react",
@@ -10,9 +10,11 @@
   "bin": "./src/index.js",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
+    "babel-preset-minify": "^0.5.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -46,9 +48,11 @@
   },
   "scripts": {
     "create-sample": "yarn clean && babel-node src/index.js sample-app",
+    "build": "babel ./src --out-dir build --ignore \"src/*.test.js\" --presets minify",
     "lint": "eslint ./src ./templates",
     "test": "jest",
     "e2e": "babel-node tools/e2e.js",
-    "clean": "rimraf sample-app"
+    "clean": "rimraf sample-app",
+    "prepublish": "yarn build"
   }
 }
