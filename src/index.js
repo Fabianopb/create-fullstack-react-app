@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-const chalk = require('chalk');
-const cp = require('child_process');
-const fs = require('fs-extra');
-const path = require('path');
-const deepMerge = require('deepmerge');
-const inquirer = require('inquirer');
-const { clientChoices, serverChoices } = require('./choices');
+import chalk from 'chalk';
+import cp from 'child_process';
+import fs from 'fs-extra';
+import path from 'path';
+import deepMerge from 'deepmerge';
+import inquirer from 'inquirer';
+import { clientChoices, serverChoices } from './utils';
 
 function useYarn() {
   try {

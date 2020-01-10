@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-const chalk = require('chalk');
-const cp = require('child_process');
-const { clientChoices, serverChoices } = require('../src/choices');
+import chalk from 'chalk';
+import cp from 'child_process';
+import { clientChoices, serverChoices } from '../src/utils';
 
 (() => {
   clientChoices.forEach(client => {

@@ -10,6 +10,9 @@
   "bin": "./src/index.js",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -36,9 +39,9 @@
     ]
   },
   "scripts": {
-    "create-sample": "yarn clean && node src/index.js sample-app",
+    "create-sample": "yarn clean && babel-node src/index.js sample-app",
     "lint": "eslint ./src ./templates",
-    "e2e": "node test/e2e.js",
+    "e2e": "babel-node tools/e2e.js",
     "clean": "rimraf sample-app"
   }
 }
