@@ -7,7 +7,11 @@
     "express"
   ],
   "description": "Fullstack React application generator.",
-  "bin": "./dist/index.js",
+  "files": [
+    "build",
+    "templates"
+  ],
+  "bin": "./build/index.js",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.7.7",
@@ -48,7 +52,7 @@
   },
   "scripts": {
     "create-sample": "yarn clean && babel-node src/index.js sample-app",
-    "build": "babel ./src --out-dir dist --ignore \"src/*.test.js\" --presets minify",
+    "build": "babel ./src --out-dir build --ignore \"src/*.test.js\" --presets minify",
     "lint": "eslint ./src ./templates",
     "test": "jest",
     "e2e": "babel-node tools/e2e.js",
