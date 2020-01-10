@@ -5,40 +5,9 @@ import fs from 'fs-extra';
 import path from 'path';
 import deepMerge from 'deepmerge';
 import inquirer from 'inquirer';
-import { clientChoices, serverChoices } from './utils';
+import { clientChoices, serverChoices, filterFiles, useYarn, checkProjectName } from './utils';
 
-function useYarn() {
-  try {
-    cp.execSync('yarnpkg --version', { stdio: 'ignore' });
-    console.log(chalk.cyan("Yarn found! You're good to go!\n"));
-  } catch (e) {
-    console.log(
-      chalk.red('Yarn not found. Please go to https://yarnpkg.com/ install yarn and try again.'),
-    );
-    process.exit(1);
-  }
-}
-
-function checkProjectName(projectName) {
-  if (!projectName) {
-    console.log(chalk.red('Project name has to be specified. Try for example:'));
-    console.log(`  ${chalk.cyan('npx create-fullstack-react-app')} ${chalk.yellow('my-app')}\n`);
-    process.exit(1);
-  }
-}
-
-const filterFiles = source => {
-  const templateSrc = source.split('template')[1];
-  return (
-    !templateSrc.includes('/package.json') &&
-    !templateSrc.includes('/README.md') &&
-    !templateSrc.includes('/node_modules') &&
-    !templateSrc.includes('/coverage') &&
-    !templateSrc.includes('/build')
-  );
-};
-
-function createProjectTemplate(projectName, frontend, database) {
+const createProjectTemplate = (projectName, frontend, database) => {
   const backendSource = path.join(__dirname, `../templates/${database}`);
   if (!fs.existsSync(backendSource)) {
     console.log(chalk.red(`Backend '${database}' setup not found!\n`));
@@ -78,7 +47,7 @@ function createProjectTemplate(projectName, frontend, database) {
     path.join(destinationPath, 'README.md'),
     `${frontendReadme}\n\n${backendReadme}`,
   );
-}
+};
 
 (async () => {
   try {

@@ -17,6 +17,7 @@
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0"
@@ -38,9 +39,15 @@
       "git add"
     ]
   },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/src/*.test.js"
+    ]
+  },
   "scripts": {
     "create-sample": "yarn clean && babel-node src/index.js sample-app",
     "lint": "eslint ./src ./templates",
+    "test": "jest",
     "e2e": "babel-node tools/e2e.js",
     "clean": "rimraf sample-app"
   }
