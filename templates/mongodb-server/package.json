@@ -28,6 +28,7 @@
     "serve": "cd build-server && node server.js",
     "start-server": "nodemon --exec babel-node server/server.js",
     "test-server": "jest --config=server/jest.config.js /server --coverage",
-    "build-server": "babel ./server --out-dir build-server --ignore \"server/coverage\",\"server/**/*.test.js\",\"server/jest.config.js\" --presets minify"
+    "build-server": "babel ./server --out-dir build-server --ignore \"server/coverage\",\"server/**/*.test.js\",\"server/jest.config.js\" --presets minify",
+    "seed": "babel-node tools/seedDatabase.js"
   }
 }
