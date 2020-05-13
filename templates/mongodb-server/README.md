@@ -6,7 +6,7 @@ Install MongoDB and start your server: [MongoDB instructions](https://docs.mongo
 
 Seed database with sample data if you want:
 ```
-node tools/seedDatabase.js
+npx babel-node tools/seedDatabase.js
 ```
 
 Start development server:
