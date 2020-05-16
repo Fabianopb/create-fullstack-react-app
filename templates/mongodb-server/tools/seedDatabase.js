@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
-const chalk = require('chalk');
-const Item = require('../server/items/item.model');
-const User = require('../server/users/user.model');
-const config = require('../server/config');
+import { connect, disconnect } from 'mongoose';
+import chalk from 'chalk';
+import Item from '../server/items/item.model';
+import User from '../server/users/user.model';
+import { url } from '../server/config';
 
 (async () => {
   try {
-    await mongoose.connect(config.url, {
+    await connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
@@ -33,6 +33,6 @@ const config = require('../server/config');
   } catch (error) {
     console.log(chalk.red(error));
   } finally {
-    await mongoose.disconnect();
+    await disconnect();
   }
 })();
