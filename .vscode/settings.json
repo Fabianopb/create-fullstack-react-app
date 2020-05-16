@@ -1,0 +1,32 @@
+{
+    "files.exclude": {
+      "**/node_modules": true
+    },
+    "search.exclude": {
+      "static": true,
+      "**/node_modules": true
+    },
+    "[typescript]": {
+      "editor.formatOnSave": true
+    },
+    "[typescriptreact]": {
+      "editor.formatOnSave": true
+    },
+    "[javascript]": {
+      "editor.formatOnSave": true
+    },
+    "[javascriptreact]": {
+      "editor.formatOnSave": true
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "files.associations": {
+      "*.css": "postcss"
+    },
+    "eslint.validate": [
+      "typescript",
+      "typescriptreact",
+      "javascript",
+      "javascriptreact"
+    ]
+  }
+  
