@@ -7,7 +7,7 @@ const userModel = (sequelize, DataTypes) => {
     },
     {},
   );
-  User.associate = function(models) {
+  User.associate = function (models) {
     User.hasMany(models.Item);
   };
   return User;

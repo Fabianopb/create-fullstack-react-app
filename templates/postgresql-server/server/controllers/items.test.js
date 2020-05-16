@@ -7,11 +7,9 @@ afterAll(() => {
 });
 
 describe('Items endpoints tests', () => {
-  it('creates and gets an item', async done => {
+  it('creates and gets an item', async (done) => {
     // create a user
-    await request(app)
-      .post('/api/items')
-      .send({ name: 'Blue pen' });
+    await request(app).post('/api/items').send({ name: 'Blue pen' });
     // get the created user
     const response = await request(app).get('/api/items');
     expect(response.status).toBe(200);

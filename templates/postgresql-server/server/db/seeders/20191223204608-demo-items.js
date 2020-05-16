@@ -3,7 +3,7 @@ import db from '../../models';
 const date = new Date();
 
 const seed = {
-  up: async queryInterface => {
+  up: async (queryInterface) => {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       const users = await db.User.findAll({ raw: true });
@@ -43,7 +43,7 @@ const seed = {
     }
   },
 
-  down: async queryInterface => {
+  down: async (queryInterface) => {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       await queryInterface.bulkDelete('Items', null, { transaction });

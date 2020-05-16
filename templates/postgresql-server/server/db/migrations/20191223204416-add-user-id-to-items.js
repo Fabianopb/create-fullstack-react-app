@@ -8,7 +8,7 @@ const migration = {
       },
     }),
 
-  down: queryInterface => queryInterface.removeColumn('Items', 'UserId'),
+  down: (queryInterface) => queryInterface.removeColumn('Items', 'UserId'),
 };
 
 export default migration;

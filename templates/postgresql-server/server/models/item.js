@@ -6,7 +6,7 @@ const itemModel = (sequelize, DataTypes) => {
     },
     {},
   );
-  Item.associate = function() {
+  Item.associate = function () {
     // associations can be defined here
   };
   return Item;

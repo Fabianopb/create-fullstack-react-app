@@ -7,11 +7,9 @@ afterAll(() => {
 });
 
 describe('Users endpoints tests', () => {
-  it('creates and gets a user', async done => {
+  it('creates and gets a user', async (done) => {
     // create a user
-    await request(app)
-      .post('/api/users')
-      .send({ name: 'John Doe', age: 30 });
+    await request(app).post('/api/users').send({ name: 'John Doe', age: 30 });
     // get the created user
     const response = await request(app).get('/api/users');
     expect(response.status).toBe(200);

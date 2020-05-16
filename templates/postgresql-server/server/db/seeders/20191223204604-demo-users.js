@@ -1,7 +1,7 @@
 const date = new Date();
 
 const seed = {
-  up: async queryInterface => {
+  up: async (queryInterface) => {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       await queryInterface.bulkInsert(
@@ -29,7 +29,7 @@ const seed = {
     }
   },
 
-  down: async queryInterface => {
+  down: async (queryInterface) => {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       await queryInterface.bulkDelete('Users', null, { transaction });
