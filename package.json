@@ -29,7 +29,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "deepmerge": "^4.2.2",
     "fs-extra": "^8.1.0",
     "inquirer": "^7.1.0"
