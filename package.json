@@ -53,7 +53,7 @@
   "scripts": {
     "create-sample": "yarn clean && babel-node src/index.js sample-app",
     "build": "babel ./src --out-dir build --ignore \"src/*.test.js\" --presets minify",
-    "lint": "eslint ./src ./templates",
+    "lint": "eslint ./",
     "test": "jest",
     "e2e": "babel-node tools/e2e.js",
     "clean": "rimraf sample-app",
