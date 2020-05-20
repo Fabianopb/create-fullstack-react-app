@@ -4,8 +4,8 @@ import cp from 'child_process';
 import { clientChoices, serverChoices } from '../src/utils';
 
 (() => {
-  clientChoices.forEach(client => {
-    serverChoices.forEach(server => {
+  clientChoices.forEach((client) => {
+    serverChoices.forEach((server) => {
       console.log(
         chalk.cyan('creating app with'),
         chalk.yellow(client.name),
