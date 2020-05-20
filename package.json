@@ -51,7 +51,7 @@
     ]
   },
   "scripts": {
-    "create-sample": "yarn clean && babel-node src/index.js sample-app",
+    "create-sample": "yarn clean && SKIP_PREFLIGHT_CHECK=true babel-node src/index.js sample-app",
     "build": "babel ./src --out-dir build --ignore \"src/*.test.js\" --presets minify",
     "lint": "eslint ./",
     "test": "jest",
