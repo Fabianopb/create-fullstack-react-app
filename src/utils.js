@@ -23,7 +23,7 @@ export const useYarn = () => {
   }
 };
 
-export const checkProjectName = projectName => {
+export const checkProjectName = (projectName) => {
   if (!projectName) {
     console.log(chalk.red('Project name has to be specified. Try for example:'));
     console.log(`  ${chalk.cyan('npx create-fullstack-react-app')} ${chalk.yellow('my-app')}\n`);
@@ -31,7 +31,7 @@ export const checkProjectName = projectName => {
   }
 };
 
-export const filterFiles = source => {
+export const filterFiles = (source) => {
   const templateSrc = source.split('template')[1];
   return (
     !templateSrc.includes('/package.json') &&

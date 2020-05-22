@@ -22,9 +22,7 @@ describe('/api/users tests', () => {
   });
 
   it('should post and get a user', async () => {
-    const postResponse = await request(app)
-      .post('/api/users')
-      .send({ name: 'John Doe', age: 34 });
+    const postResponse = await request(app).post('/api/users').send({ name: 'John Doe', age: 34 });
     expect(postResponse.status).toBe(200);
 
     const getResponse = await request(app).get('/api/users');

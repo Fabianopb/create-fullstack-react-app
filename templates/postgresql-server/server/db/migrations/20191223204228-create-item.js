@@ -19,7 +19,7 @@ const migration = {
         type: Sequelize.DATE,
       },
     }),
-  down: queryInterface => queryInterface.dropTable('Items'),
+  down: (queryInterface) => queryInterface.dropTable('Items'),
 };
 
 export default migration;

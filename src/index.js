@@ -47,6 +47,10 @@ const createProjectTemplate = (projectName, frontend, database) => {
     path.join(destinationPath, 'README.md'),
     `${frontendReadme}\n\n${backendReadme}`,
   );
+  // Skip preflight check in sample mode to avoid react-scripts conflicting with root dependencies
+  if (process.env.SKIP_PREFLIGHT_CHECK === 'true') {
+    fs.writeFileSync(path.join(destinationPath, '.env'), 'SKIP_PREFLIGHT_CHECK=true');
+  }
 };
 
 (async () => {

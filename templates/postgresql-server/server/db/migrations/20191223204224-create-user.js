@@ -22,7 +22,7 @@ const migration = {
         type: Sequelize.DATE,
       },
     }),
-  down: queryInterface => queryInterface.dropTable('Users'),
+  down: (queryInterface) => queryInterface.dropTable('Users'),
 };
 
 export default migration;
