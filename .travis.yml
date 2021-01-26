@@ -2,17 +2,18 @@ language: node_js
 node_js:
   - 12
   - 14
-os:
-  - linux
-  - osx
+jobs:
+  os: linux
+  services: postgresql
+  # - osx
   # - windows
-addons:
-  homebrew:
-    packages:
-      - postgresql
-  apt:
-    packages:
-      - postgresql
+# addons:
+#   homebrew:
+#     packages:
+#       - postgresql
+#   apt:
+#     packages:
+#       - postgresql
 # services:
 #   - postgresql
 script:
