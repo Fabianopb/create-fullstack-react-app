@@ -10,8 +10,11 @@ addons:
   homebrew:
     packages:
       - postgresql
-services:
-  - postgresql
+  apt:
+    packages:
+      - postgresql
+# services:
+#   - postgresql
 script:
   - yarn lint
   - yarn test
