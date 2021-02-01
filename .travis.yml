@@ -1,13 +1,17 @@
 language: node_js
+
 node_js:
   - 12
   - 14
+
 os:
   - linux
-  # - osx
+  - osx
   # - windows
+
 services:
  - postgresql
+
 script:
   - yarn lint
   - yarn test
